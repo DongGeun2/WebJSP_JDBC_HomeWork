@@ -16,6 +16,8 @@
 		response.sendRedirect("Ex02_JDBC_Login.jsp");
 	} 
 %>	
+
+<link href="css/myCss.css" rel="stylesheet">	
 <jsp:include page="/common/Top.jsp"></jsp:include>
 <body>
 	<table style="width: 900px; height: 500px; margin-left: auto; margin-right: auto;">
@@ -34,30 +36,41 @@
 						String sql="select userId, ip from koreamember2";
 						pstmt = conn.prepareStatement(sql);
 						rs = pstmt.executeQuery(); 
-				%>	
-					<table style="width: 400px;height: 100px;margin-left: auto;margin-right: auto">
-							<tr><th colspan="4">회원리스트</th></tr>
+				%>	<h3 style="text-align: center;">회원리스트</h3>
+					<p></p>
+				<div class="main">
+					<div class="nv">
+					<table style="width: 100%;height: 100px;margin-left: auto;margin-right: auto;text-align: center ">
+							<tr>
+								<th>아이디</th>
+								<th>IP주소</th>
+								<th>회원정보삭제</th>
+								<th>회원정보수정</th>
+							</tr>
 						<% while(rs.next()){ %>
 							<tr>
-								<td width="100px">
+								<td width="120px">
 									<a href='Ex03_MemberDetail.jsp?id=<%=rs.getString("userId")%>'><%=rs.getString("userId")%></a>
 								</td>
-								<td width="100px"><%=rs.getString("ip")%></td>
-								<td>
+								<td width="90px"><%=rs.getString("ip")%></td>
+								<td width="70px">
 									<a href="Ex03_MemberDelete.jsp?id=<%=rs.getString("userId")%>">[삭제]</a>
 								</td>
-								<td>
+								<td width="70px">
 									<a href="Ex03_MemberEdit.jsp?id=<%=rs.getString("userId")%>">[수정]</a>
 								</td>
 							</tr> 
 						<% } %>
 					</table>
+					</div>
+				</div>	
 					<hr>
+					<div class="Login">
 						<form action="Ex03_MemberSearch.jsp" method="post">
 							회원명:<input type="text" name="search">
 							<input type="submit" value="이름검색하기">
 						</form>
-					<hr>					
+					</div>					
 				<%	
 					}catch(Exception e){
 						

@@ -43,56 +43,38 @@
 		//while(rs.next())
 		rs.next(); //1건 데이터가 있다면 전제조건
 %>	
-	
+<link href="css/myCss.css" rel="stylesheet">		
 <jsp:include page="/common/Top.jsp"></jsp:include>
-<body>
-	<table
-		style="width: 900px; height: 500px; margin-left: auto; margin-right: auto;">
-		<tr>
-			<td style="width: 700px">
+<body>			
+		<div class="main">
+			<div class="nv">
 				<form action="Ex03_MemberEditok.jsp" method="post">
-
-					<h3 style="text-align: center;">회원가입</h3>
-					<div>
-						<table
-							style="width: 400px; height: 200px; margin-left: auto; margin-right: auto;">
-							<tr>
-								<td>아이디</td>
-								<td>
-								  	<input type="text" name="id" value="<%=rs.getString(1)%>" readonly>
-								</td>
-							</tr>
-							<tr>
-								<td>비번</td>
-								<td><%= rs.getString(2) %></td>							
-							</tr>
-							<tr>
-								<td>이름</td>
-								<td>
-									<input type="text" name="name" value="<%=rs.getString(3)%>" style="background-color: yellow">
-								</td>
-							</tr>
-							<tr>
-								<td>이메일</td>
-								<td>
-									<input type="text" name="email" value="<%=rs.getString(4)%>" style="background-color: yellow">
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2">
-								<input type="submit" value="수정하기">
-								<a href='Ex03_Memberlist.jsp'>리스트이동</a></td>
-						</table>
-
-					</div>
+					<h3 style="text-align: center;">회원정보수정</h3>
+						<div class="regidiv">
+						<p>아이디</p> 
+						<input type="text" name="id" value="<%=rs.getString(1)%>" readonly>
+						</div>
+						<div class="regidiv">
+						<p>비밀번호</p> 
+						<input type="text" name="id" value="<%=rs.getString(2)%>" readonly>
+						</div>
+						<div class="regidiv">
+						<p>이름</p> 
+						<input type="text" name="name" value="<%=rs.getString(3)%>" style="background-color: yellow">
+						</div>
+						<div class="regidiv">
+						<p>이메일</p> 
+						<input type="text" name="email" value="<%=rs.getString(4)%>" style="background-color: yellow">
+						</div>
+						
+						<p></p>
+						<input type="submit" value="수정하기" class=button>
+						<a href='Ex03_Memberlist.jsp'>리스트이동</a>
+		
 				</form>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2"><jsp:include page="/common/Bottom.jsp"></jsp:include>
-			</td>
-		</tr>
-	</table>
+			</div>
+			</div>
+			<jsp:include page="/common/Bottom.jsp"></jsp:include>
 </body>
 </html>
 <%

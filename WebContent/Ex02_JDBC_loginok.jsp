@@ -77,11 +77,6 @@
 			  
 			  //이동처리
 			  response.sendRedirect("Ex02_JDBC_Main.jsp");
-			}else{
-				//ID 존재 , PWD(x)
-				out.print("<script>");
-					out.print("alert('아이디, 비밀번호를 확인해주세요')"); 
-				out.print("</script>");
 			}
 		}
 		//while 타지 않는 경우

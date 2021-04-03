@@ -16,9 +16,15 @@
 <jsp:include page="/common/Top.jsp"></jsp:include>
 </head>
 <body>
-	<table style="width: 900px; height: 500px ;margin-left: auto; margin-right: auto;">
+<div class="main">
+<div class="nv">
+<h3 style="text-align: center;">회원리스트</h3>
+	<table style="width: 100%;height: 100px;margin-left: auto;margin-right: auto;text-align: center ">
 		<tr>
-			<td style="width: 700px">
+			<th>아이디</th>
+			<th>이름</th>
+			<th>Email</th>
+		</tr>
 			 <!--  데이터 받아서 UI 구성 -->
 			 <%
 			 	String name = request.getParameter("search");	
@@ -36,12 +42,10 @@
 				pstmt.setString(1, '%'+name+'%');
 				rs= pstmt.executeQuery();
 				int rowcount=0;
-				if(rs.next()){
-					rowcount += 1; //조회건수
+				while(rs.next()){
+					rowcount ++; //조회건수
 				}
 			 %>
-				<table style="width: 400px;height: 100px;margin-left: auto;margin-right: auto">
-							<tr><th colspan="4">회원리스트</th></tr>
 							<%
 								if(rowcount > 0){
 									pstmt = conn.prepareStatement(sql2); 
@@ -50,6 +54,7 @@
 										String id = rs.getString(1);
 										String mname = rs.getString(2);
 										String email = rs.getString(3);
+										
 							%>
 									 <tr>
 									 	<td><%=id%></td>
@@ -73,12 +78,8 @@
 				Singleton_Helper.close(rs);
 				Singleton_Helper.close(pstmt);
 			%>		
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2"><jsp:include page="/common/Bottom.jsp"></jsp:include>
-			</td>
-		</tr>
-	</table>
+	<jsp:include page="/common/Bottom.jsp"></jsp:include>
+</div>
+</div>	
 </body>
 </html>

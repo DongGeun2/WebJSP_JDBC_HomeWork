@@ -1,9 +1,70 @@
 @charset "UTF-8";
 
-
+*{
+	font-family: Dotum, 돋움, Helvetica, sans-serif;
+}
 
 h1> a{
 	color: white;
 	text-decoration: none;
 }
 
+#joinform{
+	background-color: #f5f6f7;
+}
+
+.main{
+	margin: 0 auto;
+    max-width: 768px;
+    min-width: 460px;
+    
+}
+
+input{
+	border: solid 1px #dadada;
+	padding-left: 10px;
+	font-size: 14px;
+}
+
+.regidiv > input[type=text], input[type=password]{
+	width: 100%; 
+	height: 51px;
+}
+
+.jumindiv >input{
+	width: 48%;
+	height: 51px;
+}
+
+.userZipCode{
+	width: 15%;
+	
+}
+
+.button{
+	background-color: #1a73e8;
+	color: white;
+	border: 1px;
+	width: 100%;
+	height: 51px;
+	font-size: 15px;
+}
+form > {
+	width: 10%;
+	font-size: 15px;
+}
+
+.main p{
+	margin: 10px 0 0 0;
+	font-size: 13px;
+}
+
+.Login{
+	text-align: center;
+}
+
+.nv {
+	width: 80%;
+	margin: auto;
+	border-bottom: 1px solid rgba(0,0,0,.1);
+}
