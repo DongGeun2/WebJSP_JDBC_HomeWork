@@ -55,27 +55,19 @@
 				  			 <table style="width: 400px;height: 100px;margin-left: auto;margin-right: auto;">
 				  			 	<tr>
 				  			 		<td style="width:100px">아이디</td>
-				  			 		<td style="width:100px"><%= rs.getString("id") %></td>
+				  			 		<td style="width:100px"><%= rs.getString("userId") %></td>
 				  			 	</tr>
 				  			 	<tr>
 				  			 		<td style="width:100px">비번</td>
-				  			 		<td style="width:100px"><%= rs.getString("pwd") %></td>
+				  			 		<td style="width:100px"><%= rs.getString("userPass") %></td>
 				  			 	</tr>
 				  			 	<tr>
 				  			 		<td style="width:100px">이름</td>
-				  			 		<td style="width:100px"><%= rs.getString("name") %></td>
-				  			 	</tr>
-				  			 	<tr>
-				  			 		<td style="width:100px">나이</td>
-				  			 		<td style="width:100px"><%= rs.getString("age") %></td>
-				  			 	</tr>
-				  			 	<tr>
-				  			 		<td style="width:100px">성별</td>
-				  			 		<td style="width:100px"><%= rs.getString("gender") %></td>
+				  			 		<td style="width:100px"><%= rs.getString("userName") %></td>
 				  			 	</tr>
 				  			 	<tr>
 				  			 		<td style="width:100px">이메일</td>
-				  			 		<td style="width:100px"><%= rs.getString("email") %></td>
+				  			 		<td style="width:100px"><%= rs.getString("userEmail") %></td>
 				  			 	</tr>
 				  			 	<tr>
 				  			 		<td colspan="2">

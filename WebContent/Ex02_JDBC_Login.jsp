@@ -14,11 +14,11 @@
 						<table
 							style="width: 400px; height: 100px; margin-left: auto; margin-right: auto;">
 							<tr>
-								<th>아이디:</th>
+								<th>아이디: </th>
 								<td><input type="text" name="id" id="id"></td>
 							</tr>
 							<tr>
-								<th>비밀번호</th>
+								<th>비밀번호: </th>
 								<td><input type="password" name="pwd" id="pwd"></td>
 							</tr>
 							<tr>

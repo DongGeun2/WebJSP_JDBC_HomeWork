@@ -58,7 +58,7 @@
 		//conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","bituser","1004");
 		//비기능적 요구사항
 		conn = Singleton_Helper.getConnection("oracle");
-		String sql="select id, pwd from koreamember where id=?";
+		String sql="select userId, userPass from KOREAMEMBER2 where userId=?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1,id);
 		rs = pstmt.executeQuery(); 
@@ -68,27 +68,29 @@
 			//데이터가 있다 (id가 존재)
 			
 			//ID 존재
-			if(pwd.equals(rs.getString("pwd"))){
+			if(pwd.equals(rs.getString("userPass"))){
 			  //ID 존재 , PWD(0) 
 			  //정상회원
 			  
 			  //Top.jsp 정보 로그인 상태 ...
-			  session.setAttribute("userid", rs.getString("id"));
+			  session.setAttribute("userid", rs.getString("userId"));
 			  
 			  //이동처리
 			  response.sendRedirect("Ex02_JDBC_Main.jsp");
 			}else{
 				//ID 존재 , PWD(x)
 				out.print("<script>");
-					out.print("location.href='Ex02_JDBC_Login.jsp'");
+					out.print("alert('아이디, 비밀번호를 확인해주세요')"); 
 				out.print("</script>");
 			}
 		}
 		//while 타지 않는 경우
 		out.print("<script>");
-			out.print("location.href='Ex02_JDBC_JoinForm.jsp'");
+					out.print("alert('아이디, 비밀번호를 확인해주세요')"); 
+				out.print("</script>");
+		out.print("<script>");
+			out.print("location.href='Ex02_JDBC_Login.jsp'");
 		out.print("</script>");
-		
 		
 		//
 	}catch(Exception e){

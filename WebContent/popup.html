@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	
+	h3{
+		margin: 10px;
+	}
+	
+	#main{
+		width: 470px;
+		height: 350px;
+		border: 6px solid #f0f0f0;
+	}
+	
+	.top{
+		padding: 17px;
+	}
+	
+	.bottom > p {
+    float: none;
+    padding: 0 0 7px 4px;
+    *padding: 0 0 7px 0;
+    line-height: 1.4rem;
+    color: #666;
+    text-align: left;
+    margin: 0 0 5px 0;
+    
+	}
+	
+	.bottom{
+		padding: 0 15px 6px 14px;
+	    background-color: #fcfcfc;
+	    height: 285px;
+	}
+	.bottom> hr{
+		margin-top: 0;
+	    margin-bottom: 0;
+	}
+	
+	table{
+		display: none;
+	}
+	
+	th{
+	border-top: 0;
+    border-left: 1px solid #f0f0f0;
+    border-bottom : 1px solid #f0f0f0;
+    background-color: #fcfcfc;
+    color: #242424;
+    text-align: center;
+    vertical-align: middle;
+	}
+	
+	table> tbody> tr >td{
+	text-align: center;
+	margin: 30px;
+	border-top: 0;
+    border-left: 1px solid #f0f0f0;
+    border-bottom : 1px solid #f0f0f0;
+   	background: white;
+	}
+	table> tbody> tr > :hover {
+    background: rgb(0 0 0 / 9%);	
+	}
+	
+</style>
+</head>
+<body>
+	<h3>우편번호 검색</h3>
+	<div id="main">
+		<div class="top">
+		지번/ 도로명 <input type="text" size=26px class="search"> <input type="button" value="검색" class="button"> 
+		</div>
+		
+		<div class="bottom">
+		<hr>
+	
+		<div>
+			<table id="add">
+				<thead>
+				<tr> <th width="380px">주소</th><th width="80px">우편번호</th></tr>
+				</thead>
+				<tbody id="addr">
+				
+				</tbody>
+			</table>
+			<div class="addrhelp">
+				<p class="val"></p>
+				<p>지번주소 : 동/읍/면/리 이름을 입력하세요.예) 역삼동, 화도읍, 둔내면</p>
+   			 	<p>도로명주소(새주소) : 도로명을 입력하세요.예) 중앙로, 불정로432번길</p>
+		 	</div>
+		</div>
+	
+	    </div>
+	</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+	
+var addrsource = [
+    "서울특별시 동대문구 장한로27가길 37",
+    "서울특별시 동대문구 고산자로 62길 22",
+    "서울특별시 송파구 백제고분로 18길 7",
+    "경기도 가평군 가평읍 오목내길 14",
+    "경기도 성남시 중원구 자혜로8번길 26"
+  ];	
+
+$('.button').click(function(){
+	// 검색창에 아무값 없을때 
+	if($('.search').val() == ""){
+		// 창 초기화
+		if(document.getElementById("add").children[1].children.length > 0){
+			$('#addr').children().remove();
+		}
+		$('.addrhelp').show();
+		$('.val').attr("style","color:red");
+		$('.val').html("올바른 주소를 입력해주세요.");
+	// 검색창에 값이 있을시 
+	}else if($('.search').val() != null){
+		$('.addrhelp').hide();
+		// 창 초기화
+		if(document.getElementById("add").children[1].children.length > 0){
+			$('#addr').children().remove();	
+		}
+		for(var index in addrsource){
+			var tr = document.createElement("tr");
+			var td = document.createElement("td");
+			var td2 = document.createElement("td");
+			if(addrsource[index].includes($('.search').val())){   // 검색창 결과값이 들어있는지 확인 
+				var text = document.createTextNode(addrsource[index]);
+				var text2 = document.createTextNode("00000");
+				td.appendChild(text);
+				td2.appendChild(text2);
+				tr.appendChild(td);
+				tr.appendChild(td2);
+			}
+			document.getElementById("add").children[1].appendChild(tr);
+		}
+		$("#add").show();
+		
+	}
+	// 주소뜨면 클릭 이벤트 
+	$('#addr').children().each(function() {
+		 	$(this).click(function(){
+		 		window.opener.userAddr1.value=this.childNodes[0].innerHTML;
+		 		window.opener.userZipCode.value=this.childNodes[1].innerHTML;
+				// 현재창 닫기
+				window.opener.userAddr2.focus();
+				window.close();
+				
+		 	})
+	 }); 
+})
+
+$( ".search" ).autocomplete({
+    source: addrsource
+  });
+
+</script>
+</html>

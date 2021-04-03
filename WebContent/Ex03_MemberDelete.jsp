@@ -21,7 +21,7 @@
 	PreparedStatement pstmt = null;
 	try {
 		conn = Singleton_Helper.getConnection("oracle");
-		String sql = "delete from koreamember where id=?";
+		String sql = "delete from koreamember2 where userId=?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, id);
 

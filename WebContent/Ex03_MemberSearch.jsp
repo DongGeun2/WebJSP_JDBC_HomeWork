@@ -21,7 +21,7 @@
 			<td style="width: 700px">
 			 <!--  데이터 받아서 UI 구성 -->
 			 <%
-			 	String name=request.getParameter("search");	
+			 	String name = request.getParameter("search");	
 			 
 			 	Connection conn = null;
 				PreparedStatement pstmt = null;
@@ -29,15 +29,15 @@
 			    
 				//where ename like '%길동%'
 				conn = Singleton_Helper.getConnection("oracle");
-				String sql="select count(*) from koreamember where name like ?";
-				String sql2 ="select id, name, email from koreamember where name like '%"+name+"%'";
+				String sql="select userId, userName, userEmail from koreamember2 where userName like ?";
+				String sql2 ="select userId, userName, userEmail from koreamember2 where userName like '%"+name+"%'";
 				
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, '%'+name+'%');
 				rs= pstmt.executeQuery();
 				int rowcount=0;
 				if(rs.next()){
-					rowcount = rs.getInt(1); //조회건수
+					rowcount += 1; //조회건수
 				}
 			 %>
 				<table style="width: 400px;height: 100px;margin-left: auto;margin-right: auto">

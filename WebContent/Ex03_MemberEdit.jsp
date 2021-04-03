@@ -33,7 +33,7 @@
 	ResultSet rs = null;
 	try{
 		conn = Singleton_Helper.getConnection("oracle");
-		String sql="select id,pwd,name,age,trim(gender),email from koreamember where id=?";
+		String sql="select userId,userPass,userName,userEmail from koreamember2 where userId=?";
 		pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1,id);
@@ -64,7 +64,8 @@
 							</tr>
 							<tr>
 								<td>비번</td>
-								<td><%= rs.getString(2) %></td>							</tr>
+								<td><%= rs.getString(2) %></td>							
+							</tr>
 							<tr>
 								<td>이름</td>
 								<td>
@@ -72,26 +73,9 @@
 								</td>
 							</tr>
 							<tr>
-								<td>나이</td>
-								<td>
-									<input type="text" name="age" value="<%=rs.getString(4)%>" style="background-color: yellow">
-								</td>
-							</tr>
-							<tr>
-								<td>성별</td>
-								<td>
-									[<%=rs.getString(5) %>]
-									<input type="radio" name="gender" id="gender" value="여"
-									<%if (rs.getString(5).equals("여")){ %>checked<%}%>>여자
-									
-									<input type="radio" name="gender" id="gender" value="남"
-									<%if (rs.getString(5).equals("남")){ %>checked<%}%>>남자
-								</td>
-							</tr>
-							<tr>
 								<td>이메일</td>
 								<td>
-									<input type="text" name="email" value="<%=rs.getString(6)%>" style="background-color: yellow">
+									<input type="text" name="email" value="<%=rs.getString(4)%>" style="background-color: yellow">
 								</td>
 							</tr>
 							<tr>

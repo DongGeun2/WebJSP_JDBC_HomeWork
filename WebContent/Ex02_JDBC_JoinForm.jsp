@@ -1,36 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<script type="text/javascript">
- //jquery 로 간단하게 유효성 check 하기
- $(function() {
-  	$('#joinForm').submit(function() {
-	   //alert("가입");
-	if ($('#id').val() == "") { // 아이디 검사
-    	alert('ID를 입력해 주세요.');
-    	$('#id').focus();
-    return false;
-   } else if ($('#pwd').val() == "") { // 비밀번호 검사
-    alert('PWD를 입력해 주세요.');
-    $('#pwd').focus();
-    return false;
-   }else if ($('#mname').val() == "") { // 이름 검사
-    alert('mname를 입력해 주세요.');
-    $('#mname').focus();
-    return false;
-   }else if ($('#age').val() == "") { // 나이 검사
-    alert('age를 입력해 주세요.');
-    $('#age').focus();
-    return false;
-   }else if ($('#email').val() == "") { // 우편번호
-    alert('email를 입력해 주세요.');
-    $('#email').focus();
-    return false;
-   }
-   
-  });
- });
-</script>
 <!--  
 CREATE TABLE koreaMember
 (
@@ -46,48 +15,74 @@ CREATE TABLE koreaMember
 
 <jsp:include page="/common/Top.jsp"></jsp:include>
 <body>
-	<table
-		style="width: 900px; height: 500px; margin-left: auto; margin-right: auto;">
+	<table style="width: 900px; height: 500px; margin-left: auto; margin-right: auto;">
 		<tr>
 			<td style="width: 700px">
 				<form action="Ex02_JDBC_JoinOK.jsp" method="post" name="joinForm" id="joinForm">
-					<h3 style="text-align: center;">회원가입</h3>
-					<div>
-						<table
-							style="width: 400px; height: 200px; margin-left: auto; margin-right: auto;">
+					<div class=main>
+						<table>
 							<tr>
-								<th>ID:</th>
-								<td><input type="text" name="id" id="id"></td>
+								<th>아이디</th>
+								<td><input type="text" maxlength="20" id="userId" name="userId"
+									title="3~16자리의 영문+숫자 조합으로 입력해주세요"><p class="tdid"></p></td>
+							</tr>
+				
+							<tr>
+								<th>이름</th>
+								<td><input type="text" maxlength="20" id="userName"
+									name="userName" title="이름"><p class="tdname"></p></td>
 							</tr>
 							<tr>
-								<th>PWD:</th>
-								<td><input type="password" name="pwd" id="pwd"></td>
+								<th>패스워드</th>
+								<td><input type="password" maxlength="16" id="userPass"
+									name="userPass" title="8~16자리의 영문+숫자 조합으로 입력해주세요"><p class="tdpw"><p></td>
+								
 							</tr>
 							<tr>
-								<th>Name:</th>
-								<td><input type="text" name="mname" id="mname"></td>
+								<th>패스워드 확인</th>
+								<td><input type="password" maxlength="16" id="userPassCheck"
+									name="userPassCheck" title="패스워드 확인"><p class="tdpwch"><p></td>
 							</tr>
 							<tr>
-								<th>age:</th>
-								<td><input type="text" name="age" id="age" maxlength="3"></td>
+								<th>이메일</th>
+								<td><input type="text" maxlength="50" id="userEmail"
+									name="userEmail" title="이메일"><p class="tdmail"></p></td>
+								
 							</tr>
 							<tr>
-								<th>Gender:</th>
-								<td><input type="radio" name="gender" id="gender" value="여"
-									checked>여자 <input type="radio" name="gender"
-									id="gender" value="남">남자</td>
+								<th>주민번호</th>
+								<td><input type="text" maxlength="6" id="userSsn1"
+									name="userSsn1" title="주민번호1"> - <input type="password"
+									maxlength="7" id="userSsn2" name="userSsn2" title="주민번호2 ">
+									<p class="jumincheck"></p>
+								</td>
 							</tr>
 							<tr>
-								<th>Email:</th>
-								<td><input type="text" name="email" id="email"></td>
+								<th>우편번호</th>
+								<td><input type="text" maxlength="10" id="userZipCode"
+									name="userZipCode" size="9" title="주소-우편번호"> <input
+									type="button" value="우편번호검색" id="userZipCodebutton"/></td>
 							</tr>
 							<tr>
-								<td colspan="2">
-									<input type="submit" value="회원가입">
-									<input type="reset" value="취소"></td>
+								<th>주소1</th>
+								<td><input type="text" maxlength="20" size="45" id="userAddr1"
+									name="userAddr1" title="주소-기본주소"></td>
+							</tr>
+							<tr>
+								<th>주소2</th>
+								<td><input type="text" maxlength="20" size="45" id="userAddr2"
+									name="userAddr2" title="주소-상세주소"><p class=tdAddr></p></td>
+							</tr>
+							<tr>
+								<th>핸드폰번호</th>
+								<td><input type="text" size="30" maxlength="20" id="userPhone"
+									name="userPhone" title="'010','-'없이 입력하세요"><p class="tdphone"></p></td>
+							</tr>
+							<tr>
+								<td colspan="2"><input type="button" value="가입완료" class="button"> <input
+									type="reset" value="입력취소"></td>
 							</tr>
 						</table>
-
 					</div>
 				</form>
 			</td>
@@ -99,4 +94,157 @@ CREATE TABLE koreaMember
 		</tr>
 	</table>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>			
+<script type="text/javascript">
+
+// 아이디 체크
+var idcheck = /^([A-Za-z])+([0-9])+$/;
+var idck = false;
+$('#userId').blur(function(){
+	if(idcheck.test($('#userId').val()) && $('#userId').val().length >= 3){
+		$('.tdid').html("");
+		idck = true;
+	}else{
+		$('.tdid').attr("style","color:red; font-size:3px");
+		$('.tdid').html("3~16자리의 영문+숫자 조합으로 입력해주세요");
+		idck = false;
+	}
+	
+	
+});
+//이름 체크
+var namecheck = /^[가-힣]{2,3}$/;
+var nameck = false;
+$('#userName').blur(function(){
+	if(namecheck.test($('#userName').val())){
+		$(".tdname").html("");
+		nameck = true;
+	}else{
+		$('.tdname').attr("style","color:red; font-size:3px");
+		$('.tdname').html("이름을 입력해주세요");
+		nameck = false;
+	}
+	
+})
+
+
+//비밀번호 체크   
+var passwoercheck = /^([A-Za-z])+([0-9])+([~!@#$%^&*()_+|<>?:{}])+$/; 
+var passck = false;
+var passck2= false;
+$('#userPass').blur(function() {
+	if (passwoercheck.test($('#userPass').val()) && $("#userPass").val().length >= 8) {
+		console.log("일치" + $('#userPass').val());
+		$('.tdpw').html("");
+		passck2= true;
+	}else if(!passwoercheck.test($('#userPass').val())){
+		$('.tdpw').attr("style","color:red; font-size:3px");
+		$('.tdpw').html("8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.");
+		passck2= false;
+		
+	}
+})
+
+$('#userPassCheck').blur(function() {
+	if ($('#userPass').val() == $('#userPassCheck').val()) {
+		console.log("일치");
+		$('.tdpwch').html("");
+		passck = true;
+	}else if($('#userPass').val() != $('#userPassCheck').val() && $('#userPassCheck').val().length >= 3 ){
+		$('.tdpwch').attr("style","color:red; font-size:3px");
+		$('.tdpwch').html("비밀번호가 일치하지 않습니다.");
+		passck = false;
+	}
+})
+// 이메일 체크
+var emailcheck = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+var emailck = false;
+$('#userEmail').blur(function(){
+	if(emailcheck.test($('#userEmail').val())){
+		$('.tdmail').html("");
+		emailck = true;
+	}else{
+		$('.tdmail').attr("style","color:red; font-size:3px");
+		$('.tdmail').html("이메일 형식이 맞지 않습니다");
+		emailck = false;
+	}
+	
+})
+// 주민번호 체크
+var jumincheck1 = /^([0-9]){6}$/;
+var jumincheck2 = /^([1-4])+([0-9]){6}$/;
+var jumincheck = false;
+$('#userSsn2').blur(function(){
+	if(jumincheck1.test($('#userSsn1').val()) && jumincheck2.test($('#userSsn2').val())){
+		$('.jumincheck').html("");
+		jumincheck = true;
+	}else{
+		$('.jumincheck').attr("style","color:red; font-size:3px");
+		$('.jumincheck').html("형식이 맞지 않습니다");
+		jumincheck = false;
+	}
+	
+})
+
+// 우편번호 체크 
+	var zipcodecheck = false;
+$('#userZipCodebutton').click(function(){
+	window.open('popup.html','우편번호검색','width=500,height=500,menubar=no');
+		
+})
+
+$('#userAddr2').focus(function(){
+		if($('#userAddr2').val() == ""){
+			$('.tdAddr').attr("style","color:red; font-size:3px");
+			$('.tdAddr').html("주소를 채워주세요");
+			zipcodecheck = false;
+		}else{
+			$('.tdAddr').html("");
+			zipcodecheck = true;
+		}	
+})
+$('#userAddr2').blur(function(){
+		if($('#userAddr2').val() == ""){
+			$('.tdAddr').attr("style","color:red; font-size:3px");
+			$('.tdAddr').html("주소를 채워주세요");
+			zipcodecheck = false;
+		}else{
+			$('.tdAddr').html("");
+			zipcodecheck = true;
+		}	
+})
+
+
+//핸드폰번호 체크
+    var phonNumberCheck = /^01[0179][0-9]{7,8}$/;
+    var phoneCheck = false;
+    
+   $('#userPhone').blur(function(){
+      if(phonNumberCheck.test($('#userPhone').val())){
+    	 $('.tdphone').html("");
+         phoneCheck = true;
+      }else{
+   		 $('.tdphone').attr("style","color:red; font-size:3px");
+         $('.tdphone').text("'010','-'없이 입력하세요");
+         phoneCheck = false;
+      }
+   });
+ 
+
+// 버튼 선택 
+	$('.button').click(function(){
+		if(idck == false || nameck == false || passck==false || emailck == false || jumincheck == false || zipcodecheck == false || phoneCheck ==false || passck2 ==false){
+			alert("빈칸을 모두 채워주세요.");
+			return;
+		}else{
+			alert("가입완료");
+			$('#joinForm').submit();
+			
+		}	
+	})
+
+</script>
+
 </html>

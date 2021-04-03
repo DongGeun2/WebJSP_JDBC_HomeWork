@@ -5,9 +5,6 @@
 	<table
 		style="width: 900px; height: 500px; margin-left: auto; margin-right: auto;">
 		<tr>
-			<%-- <td style="width: 200px">
-				<jsp:include page="/common/Left.jsp"></jsp:include>
-			</td> --%>
 			<td style="width: 700px">
 				<!-- MAIN PAGE CONTENT  -->
 				<%
@@ -35,4 +32,15 @@
 </body>
 </html>
 
-
+<!-- 
+CREATE  TABLE koreamember2( 
+	userId VARCHAR2(50) PRIMARY KEY ,
+    userName VARCHAR2(50) NOT NULL,
+    userPass VARCHAR2(50) NOT NULL,
+    userEmail VARCHAR2(50) NOT NULL,
+    userSsn CHAR(15) NOT NULL,
+    userZipCode VARCHAR2(100) NOT NULL,
+    userPhone VARCHAR2(50) NOT NULL,
+    ip   VARCHAR2(50)
+);
+ -->

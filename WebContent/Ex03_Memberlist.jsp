@@ -31,7 +31,7 @@
 					ResultSet rs = null;
 					try{
 						conn = Singleton_Helper.getConnection("oracle");
-						String sql="select id, ip from koreamember";
+						String sql="select userId, ip from koreamember2";
 						pstmt = conn.prepareStatement(sql);
 						rs = pstmt.executeQuery(); 
 				%>	
@@ -40,14 +40,14 @@
 						<% while(rs.next()){ %>
 							<tr>
 								<td width="100px">
-									<a href='Ex03_MemberDetail.jsp?id=<%=rs.getString("id")%>'><%=rs.getString("id")%></a>
+									<a href='Ex03_MemberDetail.jsp?id=<%=rs.getString("userId")%>'><%=rs.getString("userId")%></a>
 								</td>
 								<td width="100px"><%=rs.getString("ip")%></td>
 								<td>
-									<a href="Ex03_MemberDelete.jsp?id=<%=rs.getString("id")%>">[삭제]</a>
+									<a href="Ex03_MemberDelete.jsp?id=<%=rs.getString("userId")%>">[삭제]</a>
 								</td>
 								<td>
-									<a href="Ex03_MemberEdit.jsp?id=<%=rs.getString("id")%>">[수정]</a>
+									<a href="Ex03_MemberEdit.jsp?id=<%=rs.getString("userId")%>">[수정]</a>
 								</td>
 							</tr> 
 						<% } %>

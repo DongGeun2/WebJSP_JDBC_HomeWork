@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>3조</title>
+ <title>3조</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -22,7 +22,7 @@
 
   <!-- Custom styles for this template -->
   <link href="css/clean-blog.min.css" rel="stylesheet">
-
+	<link href="css/myCss.css" rel="stylesheet">	
 </head>
 
 <body>
@@ -37,16 +37,15 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="#">글쓰기</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Sample Post</a>
-	         </li>
 			<%
 			if (session.getAttribute("userid") != null) {
+				if(session.getAttribute("userid").equals("admin")){
+					out.print("<li class='nav-item'>");
+					out.print("<a href='Ex03_Memberlist.jsp'> 회원관리 </a>");
+					out.print("</li>");
+				}
 				out.print("<li class='nav-item'><a href=''>" + session.getAttribute("userid") + " 로그인 상태 </a></li>");
 				out.print("<li class='nav-item'>");
 				out.print("<a href='Ex02_JDBC_Logout.jsp'> 로그아웃 </a>");
@@ -55,11 +54,12 @@
 				out.print("<li class='nav-item'>");
 				out.print("<a href='Ex02_JDBC_Login.jsp'> 로그인 </a>");
 				out.print("</li>");
+				out.print("<li class='nav-item'>");
+				out.print("<a href='Ex02_JDBC_JoinForm.jsp'> 회원가입 </a>");
+				out.print("</li>");
 			}
+			
 			%>													
-			<li class="nav-item">
-            <a class="nav-link" href="Ex02_JDBC_JoinForm.jsp">회원가입</a>
-          </li>
         </ul>
       </div>
     </div>
@@ -72,7 +72,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="page-heading">
-            <h1>3 조 !</h1>
+            <h1><a href="Ex02_JDBC_Main.jsp">3조 !</a></h1>
             <span class="subheading">우리는 3조다</span>
           </div>
         </div>
