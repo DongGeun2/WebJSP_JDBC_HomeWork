@@ -37,25 +37,25 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">글쓰기</a>
+            <a class="nav-link" href="memolist.jsp">게시판</a>
           </li>
 			<%
 			if (session.getAttribute("userid") != null) {
 				if(session.getAttribute("userid").equals("admin")){
 					out.print("<li class='nav-item'>");
-					out.print("<a href='Ex03_Memberlist.jsp'> 회원관리 </a>");
+					out.print("<a class='nav-link' href='Ex03_Memberlist.jsp'> 회원관리 </a>");
 					out.print("</li>");
 				}
 				out.print("<li class='nav-item'><a href=''>" + session.getAttribute("userid") + " 로그인 상태 </a></li>");
 				out.print("<li class='nav-item'>");
-				out.print("<a href='Ex02_JDBC_Logout.jsp'> 로그아웃 </a>");
+				out.print("<a class='nav-link' href='Ex02_JDBC_Logout.jsp'> 로그아웃 </a>");
 				out.print("</li>");
 			} else {
 				out.print("<li class='nav-item'>");
-				out.print("<a href='Ex02_JDBC_Login.jsp'> 로그인 </a>");
+				out.print("<a class='nav-link' href='Ex02_JDBC_Login.jsp'> 로그인 </a>");
 				out.print("</li>");
 				out.print("<li class='nav-item'>");
-				out.print("<a href='Ex02_JDBC_JoinForm.jsp'> 회원가입 </a>");
+				out.print("<a class='nav-link' href='Ex02_JDBC_JoinForm.jsp'> 회원가입 </a>");
 				out.print("</li>");
 			}
 			

@@ -17,6 +17,7 @@ CREATE TABLE koreaMember
 <body id="joinform">
 	<div class="main">
 	<div class ="nv">
+	<h3 style="text-align: center;">회원가입</h3>
 	<form action="Ex02_JDBC_JoinOK.jsp" method="post" name="joinForm"
 		id="joinForm">
 		<div class="regidiv">
@@ -81,8 +82,7 @@ CREATE TABLE koreaMember
 	<jsp:include page="/common/Bottom.jsp"></jsp:include>
 
 </body>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
@@ -234,8 +234,12 @@ CREATE TABLE koreaMember
 					alert("빈칸을 모두 채워주세요.");
 					return;
 				} else {
-					alert("가입완료");
-					$('#joinForm').submit();
+					var cek = confirm("가입하시겠습니까?");
+					if(eck == true){
+						$('#joinForm').submit();
+					}else{
+						return;
+					}
 
 				}
 			})

@@ -63,8 +63,40 @@ form > {
 	text-align: center;
 }
 
+.Login > span{
+	margin: 0 50px;
+}
+
 .nv {
 	width: 80%;
 	margin: auto;
 	border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+
+.box2{
+	width: 100%;
+	height: 90%;
+	border: 1px;
+}
+.write{
+	width: 100%;
+	height: 420px;
+	border: 1px solid rgba(0,0,0,.1);
+	padding: 0 10px 0 10px;
+}
+
+.boardbt{
+    bottom: 12px;
+    right: 0;
+    display: inline;
+    margin-left: 475px;
+}
+
+.boardbt > input{
+	border-radius: 10px;
+	background-color: rgba(3, 199, 90, 0.12);
+	color: #009f47;
+	padding: 7px;
+	width: 45px;
 }
