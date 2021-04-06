@@ -13,7 +13,7 @@
 			<span style="text-align: left;">게시판</span><div class=boardbt><a href='memowrite.jsp'>글쓰기</a></div>
 			<p></p>
 			<br>
-			<div class="Login">
+			<div class="memolist">
 			<span>제목</span> <span>내용</span> <span>작성자</span>
 			</div>
 			<hr>
@@ -29,7 +29,7 @@ try {
     Class.forName("oracle.jdbc.OracleDriver");
     Connection conn = null;
     PreparedStatement ps = null;
-    conn = DriverManager.getConnection("jdbc:oracle:thin:@ehdrms519.iptime.org:1521:XE","bituser","1004");
+    conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.76:1521:XE","bituser","1004");
       
        String sql="select * from koreaboard"; 
        ps = conn.prepareStatement(sql); 
@@ -41,7 +41,7 @@ try {
            String title = rs.getString("title"); 
            String content = rs.getString("contents"); 
             
-           out.println("<div class='Login'>"); 
+           out.println("<div class='memolist'>"); 
            out.println("<span>"+title+"</span>"); // 제목
            out.println("<span>"+content+"</span>"); // 내용 
            out.println("<span>"+id+"</span>"); //작성자 

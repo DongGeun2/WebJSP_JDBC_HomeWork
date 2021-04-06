@@ -63,8 +63,11 @@ form > {
 	text-align: center;
 }
 
-.Login > span{
-	margin: 0 50px;
+.memolist{
+	text-align: center;
+}
+.memolist > span{
+	margin-left: 3em;
 }
 
 .nv {

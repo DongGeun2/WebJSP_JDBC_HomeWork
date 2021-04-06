@@ -51,7 +51,8 @@
 	PreparedStatement pstmt=null;
 	
 	try{
-		conn = DriverManager.getConnection("jdbc:oracle:thin:@ehdrms519.iptime.org:1521:XE","bituser","1004");
+		//conn = DriverManager.getConnection("jdbc:oracle:thin:@ehdrms519.iptime.org:1521:XE","bituser","1004");
+		conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.76:1521:XE","bituser","1004");
 		String sql="insert into KOREAMEMBER2(userId,userName,userPass,userEmail,userSsn,userZipCode,userPhone,ip) values(?,?,?,?,?,?,?,?)";
 		pstmt = conn.prepareStatement(sql);
 		

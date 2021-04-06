@@ -235,7 +235,7 @@ CREATE TABLE koreaMember
 					return;
 				} else {
 					var cek = confirm("가입하시겠습니까?");
-					if(eck == true){
+					if(cek == true){
 						$('#joinForm').submit();
 					}else{
 						return;

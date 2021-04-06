@@ -7,7 +7,12 @@
 	}
      */
 	request.setCharacterEncoding("UTF-8");
-
+     if(session.getAttribute("userid") == null){
+ 		//강제로 페이지 이동
+ 		
+ 		out.print("<script>alert('로그인후 작성가능합니다'); location.href='Ex02_JDBC_Login.jsp'</script>");
+ 		 
+ 	}
 %>    
 <jsp:include page="/common/Top.jsp"></jsp:include>
 <link href="css/myCss.css" rel="stylesheet">	

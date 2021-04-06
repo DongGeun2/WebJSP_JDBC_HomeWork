@@ -43,4 +43,20 @@ CREATE  TABLE koreamember2(
     userPhone VARCHAR2(50) NOT NULL,
     ip   VARCHAR2(50)
 );
+
+CREATE  TABLE koreaboard( 
+	userId VARCHAR2(50)NOT NULL ,
+    title VARCHAR2(50) NOT NULL,
+    contents VARCHAR2(500) NOT NULL
+);
+
+SELECT * FROM KOREAMEMBER2 ;
+SELECT * FROM koreaboard ;
+
+
+어드민 계정
+insert into KOREAMEMBER2(userId,userName,userPass,userEmail,userSsn,userZipCode,userPhone,ip) values('admin','관리자','1004','ehdrsm519@naver.com','?','?','?','?');
+
+
+
  -->

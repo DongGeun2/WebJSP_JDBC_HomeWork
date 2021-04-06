@@ -24,7 +24,7 @@
 		 Class.forName("oracle.jdbc.OracleDriver");
 		 Connection conn =null;
 		 PreparedStatement pstmt = null;
-		 conn = DriverManager.getConnection("jdbc:oracle:thin:@ehdrms519.iptime.org:1521:XE","bituser","1004");
+		 conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.76:1521:XE","bituser","1004");
 		 
 		 //out.print("DB연결 : " +conn.isClosed());
 		 String sql="insert into koreaboard(userid,title,contents) values(?,?,?)";
